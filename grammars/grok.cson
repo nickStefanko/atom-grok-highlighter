@@ -1,33 +1,64 @@
-'scopeName': 'grok'
+'scopeName': 'GrokMeUp'
 'fileTypes': [
   'grok'
 ]
-'name': 'Grok Highlight'
+'name': 'GrokHighlighter'
 'patterns': [
   {
     captures:
       "1":
-        name: "OpeningBracket"
+        name: "variable.text"
       "2":
-        name: "PatternName"
+        name: "entity.name.function"
       "3":
-        name: "colon"
+        name: "constant.numeric"
       "4":
-        name: "GrokName"
+        name: "string.text"
       "5":
-        name: "ClosingBracket"
+        name: "variable.text"
     comment: "Named Grok"
-    match: "(%{)([A-Z0-9_]*)(:)([A-Za-z0-9_\-]*)(})"
+    match: "(%{)([A-Z0-9_]*)(:)([A-Za-z0-9_;:\/\\\-]*)(})"
   }
   {
     captures:
       "1":
-        name: "vOpeningBracket"
+        name: "variable.text"
       "2":
-        name: "PatternName"
+        name: "entity.name.function"
       "3":
-        name: "ClosingBracket"
+        name: "variable.text"
     comment: "Unnamed Grok"
     match: "(%{)([A-Z0-9_]+)(})"
+  }
+  {
+    captures:
+      "1":
+        name: "comment.text"
+    comment: "Grok Comment"
+    match: "(\#.*)"
+  }
+  {
+    captures:
+      "1":
+        name: "keyword.control"
+    comment: "Grok Pattern Name"
+    match: "(^[A-Z0-9_]+)"
+  }
+  {
+    begin: '\\[[^\]]+'
+    beginCaptures:
+      "0":
+        name: 'support.type.pthread'
+    end:'\][\*\+\?]?'
+    endCaptures:
+      "0":
+        name: 'support.type.pthread'
+  }
+  {
+    captures:
+      "0":
+        name: "constant.numeric"
+    comment: "Grok Comment"
+    match: "[\?:]|\\(|[\|]|\\)"
   }
 ]
