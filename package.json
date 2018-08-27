@@ -1,0 +1,13 @@
+{
+  "name": "atom-grok-highlighter",
+  "version": "0.0.0",
+  "description": "GROK language support in Atom",
+  "engines": {
+    "atom": "*",
+    "node": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nickStefanko/atom-grok-highlighter"
+  }
+}
