@@ -1,0 +1,33 @@
+'scopeName': 'grok'
+'fileTypes': [
+  'grok'
+]
+'name': 'Grok Highlight'
+'patterns': [
+  {
+    captures:
+      "1":
+        name: "OpeningBracket"
+      "2":
+        name: "PatternName"
+      "3":
+        name: "colon"
+      "4":
+        name: "GrokName"
+      "5":
+        name: "ClosingBracket"
+    comment: "Named Grok"
+    match: "(%{)([A-Z0-9_]*)(:)([A-Za-z0-9_\-]*)(})"
+  }
+  {
+    captures:
+      "1":
+        name: "vOpeningBracket"
+      "2":
+        name: "PatternName"
+      "3":
+        name: "ClosingBracket"
+    comment: "Unnamed Grok"
+    match: "(%{)([A-Z0-9_]+)(})"
+  }
+]
