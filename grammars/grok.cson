@@ -6,29 +6,27 @@
 'patterns': [
   {
     captures:
+      "0":
+        name: "variable.text"
       "1":
-        name: "variable.text"
-      "2":
         name: "entity.name.function"
-      "3":
+      "2":
         name: "constant.numeric"
-      "4":
+      "3":
         name: "string.text"
-      "5":
-        name: "variable.text"
+
     comment: "Named Grok"
-    match: "(%{)([A-Z0-9_]*)(:)([A-Za-z0-9_;:\/\\\-]*)(})"
+    match: "%{([A-Z0-9_]*)(:)([A-Za-z0-9_;:\/\\\-]*)}"
   }
   {
     captures:
+      "0":
+        name: "variable.text"
       "1":
-        name: "variable.text"
-      "2":
         name: "entity.name.function"
-      "3":
-        name: "variable.text"
+
     comment: "Unnamed Grok"
-    match: "(%{)([A-Z0-9_]+)(})"
+    match: "%{([A-Z0-9_]+)}"
   }
   {
     captures:
@@ -39,26 +37,29 @@
   }
   {
     captures:
-      "1":
+      "0":
         name: "keyword.control"
     comment: "Grok Pattern Name"
-    match: "(^[A-Z0-9_]+)"
+    match: "^[A-Z0-9_]+"
   }
   {
-    begin: '\\[[^\]]+'
-    beginCaptures:
+    captures:
       "0":
-        name: 'support.type.pthread'
-    end:'\][\*\+\?]?'
-    endCaptures:
-      "0":
-        name: 'support.type.pthread'
+        name: "support.type.pthread"
+    match: "\\[([^%]+)\\]|\\[|\\]"
   }
   {
     captures:
       "0":
         name: "constant.numeric"
-    comment: "Grok Comment"
-    match: "[\?:]|\\(|[\|]|\\)"
+    comment: "Parens and ors and what not"
+    match: "\\?:|\\(|\\)|\\|"
+  }
+  {
+    captures:
+      "0":
+        name: "constant.numeric"
+    comment: "Parens and ors and what not"
+    match: "\\{([A-Za-z0-9_\\-,]*)\\}"
   }
 ]
