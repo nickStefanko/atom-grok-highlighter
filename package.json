@@ -1,6 +1,6 @@
 {
   "name": "atom-grok-highlighter",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "GROK language support in Atom",
   "engines": {
     "atom": "*",
